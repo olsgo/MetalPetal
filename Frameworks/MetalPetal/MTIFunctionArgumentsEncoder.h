@@ -7,6 +7,11 @@
 
 #import <Metal/Metal.h>
 
+// Suppress deprecation warnings for MTLArgument (deprecated in macOS 13.0/iOS 16.0)
+// MTLArgument is still functional and needed for backwards compatibility with older Metal APIs
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol MTIFunctionArgumentEncodingProxy <NSObject>
@@ -36,5 +41,6 @@ __attribute__((objc_subclassing_restricted))
 
 @end
 
+#pragma clang diagnostic pop
 
 NS_ASSUME_NONNULL_END
